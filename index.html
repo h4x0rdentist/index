@@ -15,20 +15,25 @@
     }
 
     :root {
-      --bg-primary: #0e0e0e;
-      --bg-card: #181818;
-      --bg-card-hover: #1e1e1e;
-      --text-primary: #f0ece4;
-      --text-secondary: #a8a199;
-      --text-muted: #6b6560;
-      --accent: #c9a96e;
-      --accent-dim: #8a7347;
-      --border: #2a2723;
-      --border-light: #3a3632;
+      --bg-primary: #f8f6f2;
+      --bg-card: #ffffff;
+      --bg-hero: linear-gradient(168deg, #e8f4f0 0%, #f8f6f2 40%, #faf8f5 100%);
+      --text-primary: #2c3e3a;
+      --text-secondary: #4a5d58;
+      --text-muted: #8a9691;
+      --accent: #3d8b7a;
+      --accent-hover: #327264;
+      --accent-light: #e8f4f0;
+      --accent-soft: #d0e8e1;
+      --warm: #c9a96e;
+      --warm-dim: #a8893f;
+      --border: #e2ddd5;
+      --border-light: #ede9e3;
       --google-blue: #4285f4;
       --star-gold: #fbbc04;
-      --shadow: 0 4px 24px rgba(0,0,0,0.4);
-      --shadow-lg: 0 8px 40px rgba(0,0,0,0.5);
+      --shadow-sm: 0 1px 3px rgba(44,62,58,0.06);
+      --shadow: 0 4px 16px rgba(44,62,58,0.08);
+      --shadow-lg: 0 8px 32px rgba(44,62,58,0.1);
     }
 
     html {
@@ -44,11 +49,12 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── HEADER ── */
+    /* ── HEADER / HERO ── */
     .site-header {
       text-align: center;
-      padding: 80px 24px 48px;
+      padding: 72px 24px 56px;
       position: relative;
+      background: var(--bg-hero);
     }
 
     .site-header::after {
@@ -58,15 +64,16 @@
       left: 50%;
       transform: translateX(-50%);
       width: 60px;
-      height: 1px;
+      height: 2px;
       background: var(--accent);
+      border-radius: 1px;
     }
 
     .site-header h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
+      font-weight: 400;
       font-size: clamp(2rem, 5vw, 3.2rem);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       color: var(--text-primary);
       margin-bottom: 8px;
     }
@@ -77,6 +84,40 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .btn-book {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      padding: 12px 32px;
+      border-radius: 8px;
+      transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 2px 8px rgba(61,139,122,0.2);
+    }
+
+    .btn-book:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 4px 16px rgba(61,139,122,0.3);
+      transform: translateY(-1px);
+    }
+
+    .btn-book svg {
+      width: 16px;
+      height: 16px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     /* ── REVIEWS SECTION ── */
@@ -99,15 +140,16 @@
     /* ── REVIEW CARD (Google-style) ── */
     .review-card {
       background: var(--bg-card);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-light);
       border-radius: 12px;
       padding: 32px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: var(--shadow-sm);
     }
 
     .review-card:hover {
-      border-color: var(--border-light);
+      border-color: var(--accent-soft);
       box-shadow: var(--shadow);
     }
 
@@ -130,7 +172,7 @@
       font-size: 1.1rem;
       color: #fff;
       flex-shrink: 0;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dim));
+      background: linear-gradient(135deg, var(--accent), #5aab98);
     }
 
     .reviewer-info {
@@ -187,7 +229,7 @@
     }
 
     .star-empty {
-      fill: var(--border-light);
+      fill: var(--border);
     }
 
     .review-text {
@@ -210,15 +252,16 @@
     }
 
     .review-source-link:hover {
-      opacity: 0.8;
+      opacity: 0.75;
     }
 
     /* ── DIVIDER ── */
     .section-divider {
       width: 40px;
-      height: 1px;
-      background: var(--accent-dim);
-      margin: 64px auto;
+      height: 2px;
+      background: var(--accent-soft);
+      margin: 16px auto 48px;
+      border-radius: 1px;
     }
 
     /* ── CONTACT SECTION ── */
@@ -246,15 +289,16 @@
 
     .contact-card {
       background: var(--bg-card);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-light);
       border-radius: 12px;
       padding: 32px;
       text-align: center;
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: var(--shadow-sm);
     }
 
     .contact-card:hover {
-      border-color: var(--accent-dim);
+      border-color: var(--accent-soft);
       box-shadow: var(--shadow);
     }
 
@@ -275,6 +319,13 @@
       line-height: 1.5;
     }
 
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
     .contact-phone {
       display: inline-flex;
       align-items: center;
@@ -285,13 +336,13 @@
       font-weight: 400;
       letter-spacing: 0.04em;
       padding: 10px 24px;
-      border: 1px solid var(--accent-dim);
+      border: 1px solid var(--accent-soft);
       border-radius: 8px;
       transition: all 0.3s ease;
     }
 
     .contact-phone:hover {
-      background: rgba(201, 169, 110, 0.08);
+      background: var(--accent-light);
       border-color: var(--accent);
     }
 
@@ -302,11 +353,37 @@
       fill: none;
     }
 
+    .contact-map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transition: color 0.2s ease;
+    }
+
+    .contact-map-link:hover {
+      color: var(--accent);
+    }
+
+    .contact-map-link svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
     /* ── FOOTER ── */
     .site-footer {
       text-align: center;
       padding: 32px 24px;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--border-light);
     }
 
     .site-footer p {
@@ -317,12 +394,12 @@
     }
 
     .site-footer a {
-      color: var(--accent-dim);
+      color: var(--accent);
       text-decoration: none;
     }
 
     .site-footer a:hover {
-      color: var(--accent);
+      color: var(--accent-hover);
     }
 
     /* ── ANIMATIONS ── */
@@ -346,9 +423,14 @@
     .contact-card:nth-child(1) { animation-delay: 0.15s; }
     .contact-card:nth-child(2) { animation-delay: 0.3s; }
 
+    .btn-book {
+      animation: fadeUp 0.5s ease 0.2s forwards;
+      opacity: 0;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
-      .site-header { padding: 56px 20px 36px; }
+      .site-header { padding: 56px 20px 40px; }
       .reviews-section { padding: 40px 16px 60px; }
       .contact-section { padding: 0 16px 72px; }
       .review-card { padding: 24px; }
@@ -363,13 +445,17 @@
   <header class="site-header">
     <h1>Dr. Anish Kothari</h1>
     <p class="tagline">Patient Reviews</p>
+    <a href="#consultation" class="btn-book">
+      <svg viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"/></svg>
+      Book Consultation
+    </a>
   </header>
 
   <!-- REVIEWS -->
   <section class="reviews-section">
     <h2 class="section-title">What Patients Say</h2>
 
-     <!-- REVIEW: C. P. – Advance Dental Clinic -->
+    <!-- REVIEW: C. P. – Advance Dental Clinic -->
     <article class="review-card">
       <div class="review-header">
         <div class="reviewer-avatar">C</div>
@@ -401,13 +487,37 @@
       </a>
     </article>
 
-    <!-- 
-      ╔══════════════════════════════════════════════════════════╗
-      ║  REVIEW FROM GOOGLE MAPS LINK                          ║
-      ║  Replace the reviewer name, date, star count,          ║
-      ║  and review text below with the actual content.        ║
-      ╚══════════════════════════════════════════════════════════╝
-    -->
+    <!-- REVIEW: Suzanne Moss – Essence Dental Gants Hill -->
+    <article class="review-card">
+      <div class="review-header">
+        <div class="reviewer-avatar">S</div>
+        <div class="reviewer-info">
+          <div class="reviewer-name">Suzanne Moss</div>
+          <div class="review-meta">
+            <span class="google-badge">
+              <svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59A14.5 14.5 0 0 1 9.5 24c0-1.59.28-3.14.76-4.59l-7.98-6.19A23.998 23.998 0 0 0 0 24c0 3.77.9 7.35 2.56 10.52l7.97-5.93z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 5.93C6.51 42.62 14.62 48 24 48z"/></svg>
+              Google
+            </span>
+            <span class="review-date">October 2025</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-stars">
+        <svg viewBox="0 0 24 24"><polygon class="star-filled" points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <svg viewBox="0 0 24 24"><polygon class="star-filled" points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <svg viewBox="0 0 24 24"><polygon class="star-filled" points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <svg viewBox="0 0 24 24"><polygon class="star-filled" points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <svg viewBox="0 0 24 24"><polygon class="star-filled" points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      </div>
+      <p class="review-text">
+        Ive been under the care of Dr Anish Kothari and his nurse Jenny since the practice opened as Essence Dental Clinic. I have always been treated very professionally by Dr Kothari. He explains everything thst needs to be done as well as any cosmetic dentistry that I migh ask about with no pressure. I always feel well looked after.
+      </p>
+      <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2tkck1sVXlNMUJ0UWt0YU16VjNUMWsxVFhCSlpsRRAB!2m1!1s0x0:0xcb4a98ce1159a9d0!3m1!1s2@1:CAIQACodChtycF9oOkdrMlUyM1BtQktaMzV3T1k1TXBJZlE%7C%7C?entry=tts" target="_blank" rel="noopener" class="review-source-link">
+        View on Google Maps →
+      </a>
+    </article>
+
+    <!-- REVIEW: Paul Longstaff – The Dental Health Centre -->
     <article class="review-card">
       <div class="review-header">
         <div class="reviewer-avatar">P</div>
@@ -449,36 +559,6 @@
       </a>
     </article>
 
-    <!-- REVIEW: Suzanne Moss – Essence Dental Gants Hill -->
-    <article class="review-card">
-      <div class="review-header">
-        <div class="reviewer-avatar">S</div>
-        <div class="reviewer-info">
-          <div class="reviewer-name">Suzanne Moss</div>
-          <div class="review-meta">
-            <span class="google-badge">
-              <svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59A14.5 14.5 0 0 1 9.5 24c0-1.59.28-3.14.76-4.59l-7.98-6.19A23.998 23.998 0 0 0 0 24c0 3.77.9 7.35 2.56 10.52l7.97-5.93z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 5.93C6.51 42.62 14.62 48 24 48z"/></svg>
-              Google
-            </span>
-            <span class="review-date">October 2025</span>
-          </div>
-        </div>
-      </div>
-      <div class="review-stars">
-        <svg viewBox="0 0 24 24"><polygon class="star-filled" points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-        <svg viewBox="0 0 24 24"><polygon class="star-filled" points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-        <svg viewBox="0 0 24 24"><polygon class="star-filled" points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-        <svg viewBox="0 0 24 24"><polygon class="star-filled" points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-        <svg viewBox="0 0 24 24"><polygon class="star-filled" points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-      </div>
-      <p class="review-text">
-        Ive been under the care of Dr Anish Kothari and his nurse Jenny since the practice opened as Essence Dental Clinic. I have always been treated very professionally by Dr Kothari. He explains everything thst needs to be done as well as any cosmetic dentistry that I migh ask about with no pressure. I always feel well looked after.
-      </p>
-      <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2tkck1sVXlNMUJ0UWt0YU16VjNUMWsxVFhCSlpsRRAB!2m1!1s0x0:0xcb4a98ce1159a9d0!3m1!1s2@1:CAIQACodChtycF9oOkdrMlUyM1BtQktaMzV3T1k1TXBJZlE%7C%7C?entry=tts" target="_blank" rel="noopener" class="review-source-link">
-        View on Google Maps →
-      </a>
-    </article>
-
     <!--
       ╔══════════════════════════════════════════════════════════╗
       ║  TO ADD MORE REVIEWS:                                  ║
@@ -492,26 +572,34 @@
   <div class="section-divider"></div>
 
   <!-- CONTACT -->
-  <section class="contact-section">
+  <section class="contact-section" id="consultation">
     <h2 class="contact-title">Book a Consultation</h2>
     <div class="contact-grid">
 
       <div class="contact-card">
         <h3>Essence Dental</h3>
         <p class="address">Gants Hill<br>630 Eastern Avenue, Ilford IG2 6PQ</p>
-        <a href="tel:02085545691" class="contact-phone">
-          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          020 8554 5691
-        </a>
+        <div class="contact-links">
+          <a href="tel:02085545691" class="contact-phone">
+            <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            020 8554 5691
+          </a>
+        </div>
       </div>
 
       <div class="contact-card">
         <h3>Advance Dental Clinic</h3>
         <p class="address">Chelmsford<br>104 Moulsham Street, Essex CM2 0JG</p>
-        <a href="tel:01245268494" class="contact-phone">
-          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          01245 268 494
-        </a>
+        <div class="contact-links">
+          <a href="tel:01245268494" class="contact-phone">
+            <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            01245 268 494
+          </a>
+          <a href="https://www.google.com/maps/search/Advance+Dental+Clinic+104+Moulsham+Street+Chelmsford+CM2+0JG" target="_blank" rel="noopener" class="contact-map-link">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            View on Google Maps
+          </a>
+        </div>
       </div>
 
     </div>
