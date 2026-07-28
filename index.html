@@ -6,7 +6,7 @@
   <title>Dr. Anish Kothari | Patient Reviews</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       margin: 0;
@@ -122,6 +122,7 @@
 
     .badge-openday {
       display: block;
+      position: relative;
       width: 118px;
       height: 118px;
       margin: 28px auto 0;
@@ -133,7 +134,7 @@
       filter: drop-shadow(0 5px 14px rgba(138,105,35,0.42));
     }
 
-    .badge-openday svg {
+    .badge-openday > svg {
       width: 100%;
       height: 100%;
       display: block;
@@ -141,8 +142,34 @@
       transition: transform 0.25s ease;
     }
 
-    .badge-openday:hover svg {
+    .badge-openday:hover > svg {
       transform: rotate(-2deg) scale(1.05);
+    }
+
+    .badge-note {
+      position: absolute;
+      top: -36px;
+      left: 96px;
+      width: 110px;
+      text-align: left;
+    }
+
+    .badge-note span {
+      display: inline-block;
+      font-family: 'Caveat', cursive;
+      font-size: 1.55rem;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+      color: #d43d2a;
+      transform: rotate(-6deg);
+    }
+
+    .badge-note svg {
+      display: block;
+      width: 42px;
+      height: 44px;
+      margin: 2px 0 0 -2px;
     }
 
     /* ── REVIEWS SECTION ── */
@@ -688,6 +715,14 @@
         <text x="60" y="72" text-anchor="middle" font-family="'Jost', sans-serif" font-weight="500" font-size="11" letter-spacing="1.4" fill="#4a3a12">IMPLANT</text>
         <text x="60" y="86" text-anchor="middle" font-family="'Jost', sans-serif" font-weight="500" font-size="11" letter-spacing="1.4" fill="#4a3a12">OPEN DAY</text>
       </svg>
+      <span class="badge-note" aria-hidden="true">
+        <span>click me</span>
+        <svg viewBox="0 0 50 50" fill="none" stroke="#d43d2a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M 41 4 C 32 9, 16 20, 9 42"/>
+          <path d="M 9 42 L 10.5 31"/>
+          <path d="M 9 42 L 19.5 39"/>
+        </svg>
+      </span>
     </a>
   </header>
 
