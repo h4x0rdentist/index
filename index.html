@@ -120,6 +120,27 @@
       stroke-linejoin: round;
     }
 
+    .badge-openday {
+      display: block;
+      width: 118px;
+      height: 118px;
+      margin: 28px auto 0;
+      transform: rotate(-7deg);
+      filter: drop-shadow(0 3px 8px rgba(138,105,35,0.32));
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .badge-openday:hover {
+      transform: rotate(-2deg) scale(1.05);
+      filter: drop-shadow(0 5px 14px rgba(138,105,35,0.42));
+    }
+
+    .badge-openday svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
     /* ── REVIEWS SECTION ── */
     .reviews-section {
       max-width: 800px;
@@ -622,6 +643,11 @@
       opacity: 0;
     }
 
+    .badge-openday {
+      animation: fadeUp 0.5s ease 0.35s forwards;
+      opacity: 0;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       .site-header { padding: 56px 20px 40px; }
@@ -642,6 +668,22 @@
     <a href="#consultation" class="btn-book">
       <svg viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"/></svg>
       Book Consultation
+    </a>
+    <a href="implant-open-day.html" class="badge-openday" aria-label="Free Implant Open Day — find out more">
+      <svg viewBox="0 0 120 120" role="img" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="sealGold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#eddba6"/>
+            <stop offset="45%" stop-color="#c9a96e"/>
+            <stop offset="100%" stop-color="#a8893f"/>
+          </linearGradient>
+        </defs>
+        <path d="M 60.00 6.00 A 11.63 11.63 0 0 1 78.47 9.26 A 11.63 11.63 0 0 1 94.71 18.63 A 11.63 11.63 0 0 1 106.77 33.00 A 11.63 11.63 0 0 1 113.18 50.62 A 11.63 11.63 0 0 1 113.18 69.38 A 11.63 11.63 0 0 1 106.77 87.00 A 11.63 11.63 0 0 1 94.71 101.37 A 11.63 11.63 0 0 1 78.47 110.74 A 11.63 11.63 0 0 1 60.00 114.00 A 11.63 11.63 0 0 1 41.53 110.74 A 11.63 11.63 0 0 1 25.29 101.37 A 11.63 11.63 0 0 1 13.23 87.00 A 11.63 11.63 0 0 1 6.82 69.38 A 11.63 11.63 0 0 1 6.82 50.62 A 11.63 11.63 0 0 1 13.23 33.00 A 11.63 11.63 0 0 1 25.29 18.63 A 11.63 11.63 0 0 1 41.53 9.26 A 11.63 11.63 0 0 1 60.00 6.00 Z" fill="url(#sealGold)" stroke="#a8893f" stroke-width="1"/>
+        <circle cx="60" cy="60" r="45" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <text x="60" y="53" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-weight="600" font-size="27" letter-spacing="1" fill="#4a3a12">FREE</text>
+        <text x="60" y="72" text-anchor="middle" font-family="'Jost', sans-serif" font-weight="500" font-size="11" letter-spacing="1.4" fill="#4a3a12">IMPLANT</text>
+        <text x="60" y="86" text-anchor="middle" font-family="'Jost', sans-serif" font-weight="500" font-size="11" letter-spacing="1.4" fill="#4a3a12">OPEN DAY</text>
+      </svg>
     </a>
   </header>
 
