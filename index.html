@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dr. Anish Kothari | Patient Reviews</title>
+  <title>Dr Anish Kothari — Dentist in Chelmsford &amp; Gants Hill, Ilford | Dental Implants</title>
+  <meta name="description" content="Dr Anish Kothari BDS MJDF — gentle, experienced dentist at Advance Dental Clinic, Chelmsford and Essence Dental, Gants Hill, Ilford. Free implant open days Thu 3 & 10 September — call 020 8554 5691 to book your visit.">
+  <link rel="canonical" href="https://anish.dentist/">
+  <meta name="theme-color" content="#3d8b7a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%233d8b7a' d='M12 2C8.1 2 5 4.6 5 8c0 1.9.6 3.1 1.2 4.5.5 1.2 1 2.6 1.2 4.9C7.5 18.8 7.8 22 9.3 22c1.7 0 1-4 2.7-4s1 4 2.7 4c1.5 0 1.8-3.2 1.9-4.6.2-2.3.7-3.7 1.2-4.9C18.4 11.1 19 9.9 19 8c0-3.4-3.1-6-7-6z'/%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://anish.dentist/">
+  <meta property="og:title" content="Dr Anish Kothari — Dentist in Chelmsford & Gants Hill, Ilford">
+  <meta property="og:description" content="Gentle, experienced dentist for nervous patients. Free implant open days Thu 3 & 10 September at Essence Dental, Gants Hill — patient reviews and booking details here.">
+  <meta property="og:image" content="https://anish.dentist/Anish-Kothari.jpg">
+  <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -667,6 +677,19 @@
       opacity: 0;
     }
 
+    .contact-fallback {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 14px 0 0;
+    }
+
+    .contact-fallback a {
+      color: var(--accent);
+    }
+
+    .callbar { display: none; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       .site-header { padding: 56px 20px 28px; }
@@ -675,8 +698,98 @@
       .review-card { padding: 24px; }
       .contact-card { padding: 24px; }
       .contact-grid { grid-template-columns: 1fr; }
+
+      body { padding-bottom: 68px; }
+
+      .callbar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: var(--accent);
+        box-shadow: 0 -4px 16px rgba(44,62,58,0.18);
+      }
+
+      .callbar a {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.98rem;
+        padding: 9px 8px calc(9px + env(safe-area-inset-bottom));
+      }
+
+      .callbar a + a {
+        border-left: 1px solid rgba(255,255,255,0.25);
+      }
+
+      .callbar a span {
+        font-size: 0.68rem;
+        font-weight: 300;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        opacity: 0.85;
+      }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://anish.dentist/#anish",
+        "name": "Dr Anish Kothari",
+        "jobTitle": "Dentist",
+        "url": "https://anish.dentist/",
+        "image": "https://anish.dentist/Anish-Kothari.jpg",
+        "description": "Gentle, experienced dentist providing general and restorative dentistry and dental implants, with particular experience treating nervous patients.",
+        "identifier": { "@type": "PropertyValue", "propertyID": "GDC registration", "value": "193207" },
+        "alumniOf": "King's College London Dental Institute",
+        "worksFor": [
+          { "@id": "https://anish.dentist/#advance" },
+          { "@id": "https://anish.dentist/#essence" }
+        ]
+      },
+      {
+        "@type": "Dentist",
+        "@id": "https://anish.dentist/#advance",
+        "name": "Advance Dental Clinic",
+        "url": "https://www.advancedentalclinic.com/",
+        "telephone": "+441245268494",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "104 Moulsham Street",
+          "addressLocality": "Chelmsford",
+          "addressRegion": "Essex",
+          "postalCode": "CM2 0JG",
+          "addressCountry": "GB"
+        }
+      },
+      {
+        "@type": "Dentist",
+        "@id": "https://anish.dentist/#essence",
+        "name": "Essence Dental Clinic",
+        "url": "https://www.essencedental.co.uk/",
+        "telephone": "+442085545691",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "630 Eastern Avenue, Gants Hill",
+          "addressLocality": "Ilford",
+          "addressRegion": "Greater London",
+          "postalCode": "IG2 6PQ",
+          "addressCountry": "GB"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -717,7 +830,7 @@
   <!-- PROFILE -->
   <section class="profile-section">
     <div class="profile-card">
-      <img src="Anish-Kothari.jpg" alt="Dr. Anish Kothari" class="profile-photo">
+      <img src="Anish-Kothari.jpg" alt="Dr. Anish Kothari" loading="lazy" class="profile-photo">
       <div class="profile-body">
         <div class="profile-credentials">GDC Reg: 193207</div>
         <div class="profile-qualifications">BDS Lond 2010 &nbsp;·&nbsp; MJDF RCS Eng</div>
@@ -867,6 +980,8 @@
       </div>
     </div>
 
+    <p class="contact-fallback">If your email app doesn't open, write directly to <a href="mailto:dr.anish.kothari@gmail.com">dr.anish.kothari@gmail.com</a> — or call a clinic below.</p>
+
     <div class="contact-grid">
 
       <div class="contact-card">
@@ -899,6 +1014,12 @@
 
     </div>
   </section>
+
+  <!-- MOBILE CALL BAR -->
+  <nav class="callbar" aria-label="Call to book">
+    <a href="tel:01245268494"><span>Chelmsford</span>01245 268 494</a>
+    <a href="tel:02085545691"><span>Gants Hill</span>020 8554 5691</a>
+  </nav>
 
   <!-- FOOTER -->
   <footer class="site-footer">
