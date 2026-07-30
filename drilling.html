@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implant Sequence Guide — Surgery Display</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E1516; --card:#152021; --line:#24393B;
+    --text:#E8EDEA; --muted:#8FA6A2;
+    --teal:#3FC1B0; --teal-dim:rgba(63,193,176,.14);
+    --gold:#D9A94E; --gold-dim:rgba(217,169,78,.14);
+    --alert:#C86B4A; --alert-dim:#201713;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1560px;margin:0 auto;padding:24px 28px 70px}
+  h1,h2{font-family:'Playfair Display',serif;font-weight:600}
+  h1{font-size:30px;line-height:1.1;margin:0 0 4px}
+  h1 em{color:var(--gold);font-style:normal}
+  h2{font-size:21px;margin:34px 0 8px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .kicker{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin:0 0 8px}
+  .sub{color:var(--muted);font-size:13px;margin:0 0 18px;max-width:90ch}
+  p{margin:0 0 10px}
+  ul{margin:0 0 10px;padding-left:18px}
+  li{margin-bottom:5px}
+  .mono{font-family:'DM Mono',monospace;font-size:.88em}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+  .flag{border-left:3px solid var(--alert);background:var(--alert-dim);border-radius:10px}
+  .flag .kicker{color:var(--alert)}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+  th{font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:10.5px;color:var(--muted);text-align:left;padding:5px 10px 6px 0;border-bottom:1px solid var(--line);font-weight:500}
+  td{padding:8px 10px 8px 0;border-bottom:1px solid #1B2C2C;vertical-align:top}
+  .tagA,.tagB{font-family:'DM Mono',monospace;font-size:10.5px;padding:2px 8px;border-radius:20px;white-space:nowrap}
+  .tagA{background:var(--gold-dim);color:var(--gold);border:1px solid rgba(217,169,78,.45)}
+  .tagB{background:var(--teal-dim);color:var(--teal);border:1px solid rgba(63,193,176,.45)}
+  /* timeline rows */
+  .seq{margin:0 0 14px}
+  .sitehead{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:3px}
+  .sitehead .stage{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.16em}
+  .sitehead .site{font-family:'Playfair Display',serif;font-size:19px;font-weight:600}
+  .sitehead small{font-size:11.5px;color:var(--muted)}
+  .depthchip,.anchor{font-family:'DM Mono',monospace;font-size:10.5px;padding:1px 9px;border-radius:20px}
+  .depthchip{background:var(--teal-dim);color:var(--teal);border:1px solid rgba(63,193,176,.4)}
+  .anchor{background:var(--gold-dim);color:var(--gold);border:1px solid rgba(217,169,78,.4)}
+  .strip{display:flex;gap:0;align-items:flex-end;overflow-x:auto;padding:12px 4px 6px;background:var(--card);border:1px solid var(--line);border-radius:10px;margin-top:5px}
+  .step{flex:0 0 auto;text-align:center;padding:0 8px;position:relative}
+  .step + .step::before{content:"";position:absolute;left:-3px;bottom:46px;width:6px;height:1px;background:var(--line)}
+  .step .n{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.1em}
+  .step .lbl{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;margin-top:4px;white-space:nowrap}
+  .step .dia{font-size:10px;color:var(--muted);white-space:nowrap}
+  .step.place .lbl{color:var(--gold)}
+  .step.place::after{content:"PLACE";display:block;font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.16em;color:#10100A;background:var(--gold);margin-top:5px;border-radius:20px;padding:1px 0}
+  .step.pinstay::after{content:"PIN STAYS IN";display:block;font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.08em;color:var(--teal);border:1px solid var(--teal);margin-top:5px;border-radius:20px;padding:1px 2px}
+  .step.cond::after{content:"D1 ONLY";display:block;font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;color:var(--alert);border:1px dashed var(--alert);margin-top:5px;border-radius:20px;padding:1px 2px}
+  .mode{display:inline-block;font-family:'DM Mono',monospace;font-size:9.5px;padding:1px 7px;border-radius:20px;margin-top:4px}
+  .ccw{background:var(--teal-dim);color:var(--teal);border:1px solid rgba(63,193,176,.4)}
+  .cw{background:var(--gold-dim);color:var(--gold);border:1px solid rgba(217,169,78,.4)}
+  .slow{background:#1D2A33;color:#9FB6C9;border:1px solid #34495A}
+  .hand{background:#1D2A33;color:#9FB6C9;border:1px solid #34495A}
+  .legend{display:flex;flex-wrap:wrap;gap:12px;font-size:11.5px;color:var(--muted);margin:8px 0 12px}
+  .legend span{display:flex;align-items:center;gap:5px}
+  .sw{width:10px;height:10px;border-radius:3px;display:inline-block}
+  .stepnote{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.45}
+  .stepnote strong{color:var(--text)}
+  /* desktop grid: all four upper stages on one screen */
+  @media (min-width:1200px){
+    .uppers{display:grid;grid-template-columns:1fr 1fr;column-gap:22px;row-gap:6px}
+    .keys{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+  }
+  footer{margin-top:44px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted)}
+  @media print{body{background:#fff;color:#15201f}.card,.strip{background:#f4f6f4;border-color:#ccd6d3}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Chairside Sequence Guide · Surgery Display</p>
+  <h1>LR6 conventional. Uppers on Densah. <em>One pin</em> holds the angles.</h1>
+  <p class="sub">Running order: LR6 (Ankylos sequence) → UR4 pilot, pin in → UR6 → UR7 → UR4 completion. Depths are this patient's CBCT values — verify against your own axis and the current IFUs.</p>
+
+  <table>
+    <tr><th>Site</th><th>Implant</th><th>Bone to limit</th><th>Osteotomy</th><th>Depth anchor</th><th>Shoulder</th></tr>
+    <tr><td><strong>LR6</strong></td><td><span class="tagB">B 6.6</span></td><td>~10.6 to IAN canal</td><td class="mono">drill to 6.6 mark → true ~7.4</td><td>6.6 mark + V-factor</td><td>~0.8 subcrestal</td></tr>
+    <tr><td><strong>UR4</strong></td><td><span class="tagA">A 8</span></td><td>10.1 to sinus recess</td><td class="mono">9.0 ceiling</td><td>Densah: 8 buried · 10 showing</td><td>1.0 subcrestal</td></tr>
+    <tr><td><strong>UR6</strong></td><td><span class="tagB">B 6.6</span></td><td>7.3 to sinus floor</td><td class="mono">7.3 — apex at floor</td><td>Densah: 8 showing + floor feel</td><td>0.7 subcrestal</td></tr>
+    <tr><td><strong>UR7</strong></td><td><span class="tagB">B 6.6</span></td><td>7.2 to sinus floor</td><td class="mono">7.2 — apex at floor</td><td>Densah: 8 showing + floor feel</td><td>0.6 subcrestal</td></tr>
+  </table>
+
+  <div class="legend">
+    <span><i class="sw" style="background:var(--gold)"></i> CW cutting · irrigated</span>
+    <span><i class="sw" style="background:var(--teal)"></i> CCW densifying · 800–1500 rpm · pump &amp; irrigate</span>
+    <span><i class="sw" style="background:#9FB6C9"></i> hand / ≤15 rpm / check</span>
+    <span>Gold badge = implant in · dashed = conditional</span>
+  </div>
+
+  <!-- ============ STAGE 1 : LR6 ============ -->
+  <h2>Stage 01 — LR6 · conventional Ankylos</h2>
+  <div class="seq" id="s1"></div>
+
+  <!-- ============ STAGES 2–5 : UPPERS ============ -->
+  <h2>Stages 02–05 — Upper right · Densah</h2>
+  <div class="uppers">
+    <div class="seq" id="s2"></div>
+    <div class="seq" id="s3"></div>
+    <div class="seq" id="s4"></div>
+    <div class="seq" id="s5"></div>
+  </div>
+
+  <!-- ============ KEYS ============ -->
+  <h2>Depth-mark keys</h2>
+  <div class="keys">
+    <div id="ankykey"></div>
+    <div id="denskey"></div>
+  </div>
+
+  <div class="card flag">
+    <p class="kicker">Standing hazards</p>
+    <ul style="margin:0">
+      <li><strong>Motor direction:</strong> LR6 is all-CW; uppers alternate CW pilot → CCW Densah. Call the mode out loud at every bur change.</li>
+      <li><strong>Reamer is length-specific:</strong> LR6 needs the <em>B 6.6</em> conical reamer. If the tray only holds the classic 8/9.5/11/14/17 set, do not improvise with the B8 — skip the reamer and let the tap/implant do the coronal work, or re-plan. Check tonight.</li>
+      <li><strong>Springback (uppers only):</strong> implant open before each site's final Densah bur — last bur out, implant in.</li>
+      <li><strong>Stall past ~50 Ncm:</strong> back out, re-run final bur (LR6: reamer again at 15 rpm), re-place. Never muscle a cone connection.</li>
+      <li><strong>Under 25 Ncm:</strong> cover screw and submerge. Sulcus formers: GH ≥ subcrestal + probed tissue, rounded up; wide profile at molars; two heights per site.</li>
+    </ul>
+  </div>
+
+  <footer>Chairside reference for a specific case and CBCT — where this card and the Ankylos surgical manual or Versah IFU disagree, the manufacturer governs. anish.dentist</footer>
+</div>
+
+<script>
+const BURS = {
+  lind  : {lbl:'Lindemann', ap:1.1, co:1.1, dia:'cortex mark', mode:'cw'},
+  twist : {lbl:'Twist 2.0', ap:2.0, co:2.0, dia:'to 6.6 mark', mode:'cw'},
+  twist8: {lbl:'Twist 2.0', ap:2.0, co:2.0, dia:'to 8 mark',   mode:'cw'},
+  gauge : {lbl:'Gauge + PA',ap:1.8, co:1.8, dia:'depth check', mode:'hand'},
+  pin   : {lbl:'Guide pin', ap:1.9, co:1.9, dia:'axis ref',    mode:'hand'},
+  tsA   : {lbl:'Tri-Spade A', ap:3.5, co:3.5, dia:'Ø3.5 · to 6.6 mark', mode:'cw'},
+  tsB   : {lbl:'Tri-Spade B', ap:4.5, co:4.5, dia:'Ø4.5 · to 6.6 mark', mode:'cw'},
+  reamB : {lbl:'Reamer B6.6', ap:3.0, co:4.6, dia:'coronal seat', mode:'slow'},
+  tapB  : {lbl:'Tap B', ap:4.4, co:4.4, dia:'threads', mode:'slow', thread:true},
+  vt1525: {lbl:'VT1525', ap:1.5, co:2.5, dia:'2.0 avg', mode:'ccw'},
+  vt2535: {lbl:'VT2535', ap:2.5, co:3.5, dia:'3.0 avg', mode:'ccw'},
+  vt3545: {lbl:'VT3545', ap:3.5, co:4.5, dia:'4.0 avg', mode:'ccw'}
+};
+const PX=6, SHAFT=50;
+function burSVG(b,colour,style){
+  const wTop=b.co*PX,wBot=b.ap*PX,W=42,H=SHAFT+12,cx=W/2;
+  let body;
+  if(style==='hand'){
+    body=`<rect x="${cx-wBot/2}" y="7" width="${wBot}" height="${SHAFT-5}" rx="3" fill="none" stroke="${colour}" stroke-width="2"/>`;
+  } else if(b.thread){
+    body=`<rect x="${cx-wBot/2}" y="6" width="${wBot}" height="${SHAFT-4}" fill="${colour}" opacity=".9"/>`;
+    for(let y=10;y<SHAFT;y+=6) body+=`<line x1="${cx-wBot/2-2}" y1="${y}" x2="${cx+wBot/2+2}" y2="${y-3}" stroke="${colour}" stroke-width="1.6"/>`;
+  } else {
+    body=`<path d="M ${cx-wTop/2} 6 L ${cx+wTop/2} 6 L ${cx+wBot/2} ${SHAFT-4} L ${cx} ${SHAFT+4} L ${cx-wBot/2} ${SHAFT-4} Z" fill="${colour}" opacity=".9"/>`;
+  }
+  let marks='';
+  if(style!=='hand'&&!b.thread)[3,5,8].forEach(mm=>{
+    const y=(SHAFT+4)-mm*PX;
+    if(y>7)marks+=`<line x1="${cx-wTop/2-1}" y1="${y}" x2="${cx+wTop/2+1}" y2="${y}" stroke="#0E1516" stroke-width="1.3" opacity=".85"/>`;
+  });
+  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" aria-hidden="true">${body}${marks}</svg>`;
+}
+function row(id,stage,site,sub,depth,anchor,steps,note){
+  const el=document.getElementById(id);
+  let html=`<div class="sitehead"><span class="stage">${stage}</span><span class="site">${site}</span><small>${sub}</small><span class="depthchip">${depth}</span><span class="anchor">${anchor}</span></div><div class="strip">`;
+  steps.forEach((s,i)=>{
+    const b=BURS[s.k];
+    const st=b.mode==='hand'?'hand':(b.mode==='slow'?'slow':b.mode);
+    const col=s.place?'#D9A94E':(st==='hand'||st==='slow'?'#9FB6C9':(b.mode==='ccw'?'#3FC1B0':'#D9A94E'));
+    html+=`<div class="step ${s.place?'place':''} ${s.pinstay?'pinstay':''} ${s.cond?'cond':''}">
+      <div class="n">${String(i+1).padStart(2,'0')}</div>
+      ${burSVG(b,col,st)}
+      <div class="lbl">${b.lbl}</div>
+      <div class="dia">${b.dia}</div>
+      <div class="mode ${st}">${st==='hand'?'HAND':(st==='slow'?'≤15 RPM':(b.mode==='ccw'?'CCW ↺':'CW ↻'))}</div>
+    </div>`;
+  });
+  html+=`</div><p class="stepnote">${note}</p>`;
+  el.innerHTML=html;
+}
+
+row('s1','STAGE 01','LR6','B6.6 · mandible · all conventional','TO THE 6.6 MARK','TRUE DEPTH ~7.4 · CANAL ~10.6',
+[{k:'lind'},{k:'twist'},{k:'gauge'},{k:'tsA'},{k:'tsB'},{k:'reamB'},{k:'tapB',cond:true},{k:'tsB',place:true}],
+'All drills to the <strong>6.6 mark</strong> — the V-factor (~+0.8) lands true depth at ~7.4 and the shoulder ~0.8 subcrestal; ~3 mm canal clearance holds. Twist → Tri-Spade A → Tri-Spade B at ≤800 rpm irrigated. <strong>Reamer B6.6 at ≤15 rpm</strong> cuts the tapered coronal seat and doubles as try-in gauge — drops too freely = expect low torque. <strong>Tap only if it feels D1</strong> at the reamer. Place at 15 rpm. (Final cell = implant, shown on the B silhouette.)');
+
+row('s2','STAGE 02','UR4 · Part 1','A8 · pilot &amp; pin — no Densah yet','CEILING 9.0','8 MARK + V-FACTOR ≈ 8.8',
+[{k:'lind'},{k:'twist8'},{k:'gauge'},{k:'pin',pinstay:true}],
+'Cortex mark → twist CW to the <strong>8 mark</strong> (V-factor ≈ 8.8, ceiling holds) → gauge + PA → <strong>pin in, stays through stages 03–04</strong> as the axis referee. Bias palatal against the ridge flare: bridge axis beats ridge-centring.');
+
+row('s3','STAGE 03','UR6','B6.6 · soft maxilla · match the pin','DEPTH 7.3 — FLOOR','8-LINE SHOWING + FLOOR FEEL',
+[{k:'lind'},{k:'twist'},{k:'gauge'},{k:'vt1525'},{k:'vt2535'},{k:'vt3545',place:true}],
+'Pilot CW to the <strong>6.6 mark</strong> (V-factor → ~7.3 = the floor), sighted parallel to the UR4 pin in both planes; PA before widening. Densah CCW, pumping, to firm floor resistance with the 8-line still showing. Implant ready — place immediately.');
+
+row('s4','STAGE 04','UR7','B6.6 · tightest access · floor-limited','DEPTH 7.2 — FLOOR','8-LINE SHOWING + FLOOR FEEL',
+[{k:'lind'},{k:'twist'},{k:'gauge'},{k:'vt1525'},{k:'vt2535'},{k:'vt3545',place:true}],
+'Identical run, 0.1 mm less room. Axis referenced to the pin + seated UR6. Mind both ends of any mesial cant: apex toward the UR6 fixture, shoulder toward the UR8 root — ≥1.5 mm from each.');
+
+row('s5','STAGE 05','UR4 · Part 2','A8 · pin out → widen → place','CEILING 9.0','8 BURIED · 10 SHOWING',
+[{k:'pin'},{k:'vt1525'},{k:'vt2535',place:true}],
+'Pin out, two Densah burs CCW down the existing channel, place at VT2535 (3.0 avg). Channel was cut CW so no springback — but from the first CCW bur, widen-and-place is one move. Pilot felt D2? Interleave VT1828, finish on VT2838.');
+
+/* ---------- Ankylos depth key ---------- */
+(function(){
+  const S=11, tip=190, cx=110, w=26, W=470, H=tip+34;
+  const KM=[6.6,8,9.5,11,14];
+  let s=`<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:470px;height:auto" role="img" aria-label="Ankylos drill depth marks at implant lengths, with the LR6 target and V-factor overshoot shown.">`;
+  s+=`<rect x="${cx-w/2}" y="${tip-14*S-8}" width="${w}" height="${14*S+4}" fill="#1B2A2B" stroke="#2E4547"/>`;
+  s+=`<path d="M ${cx-w/2} ${tip-4} L ${cx} ${tip+3} L ${cx+w/2} ${tip-4} Z" fill="#1B2A2B" stroke="#2E4547"/>`;
+  KM.forEach(mm=>{
+    const y=tip-mm*S;
+    s+=`<line x1="${cx-w/2-6}" y1="${y}" x2="${cx+w/2+6}" y2="${y}" stroke="#E8EDEA" stroke-width="1.6"/>`;
+    s+=`<text x="${cx-w/2-12}" y="${y+4}" text-anchor="end" font-family="'DM Mono',monospace" font-size="11" fill="#8FA6A2">${mm}</text>`;
+  });
+  const y66=tip-6.6*S, yV=tip-7.4*S;
+  s+=`<line x1="${cx-w/2-4}" y1="${yV}" x2="${cx+w/2+4}" y2="${yV}" stroke="#3FC1B0" stroke-width="2.4" stroke-dasharray="5 3"/>`;
+  s+=`<path d="M ${cx+w/2+16} ${y66} L ${cx+w/2+16} ${yV}" stroke="#C86B4A" stroke-width="2" marker-end="url(#ah)"/>`;
+  s+=`<defs><marker id="ah" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7 Z" fill="#C86B4A"/></marker></defs>`;
+  s+=`<text x="${cx+w/2+26}" y="${(y66+yV)/2+4}" font-family="'DM Mono',monospace" font-size="11" fill="#C86B4A">V-factor ≈ +0.8</text>`;
+  s+=`<text x="${cx+w/2+26}" y="${yV-8}" font-family="'DM Mono',monospace" font-size="12" fill="#3FC1B0">LR6 true depth ~7.4</text>`;
+  s+=`<text x="${cx}" y="${tip+18}" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#8FA6A2">TIP = 0</text>`;
+  s+=`</svg>`;
+  document.getElementById('ankykey').innerHTML=`
+   <div class="card" style="margin:0">
+   <p class="kicker">Ankylos drills — LR6</p>
+   <p style="font-size:12.5px">Marked at <strong>implant lengths</strong> (6.6 / 8 / 9.5 / 11 / 14…), and they cut up to <strong>0.8&nbsp;mm past the mark</strong> (V-factor). Drill to the length you're placing — the overshoot is your subcrestal depth. Mark sets vary by drill length variant (XS/S/M/L): verify the 6.6 mark exists on tonight's tray.</p>
+   ${s}
+   </div>`;
+})();
+
+/* ---------- Densah depth key ---------- */
+(function(){
+  const S=11, tip=190, cx=110, wTop=40, wBot=30, W=470, H=tip+34;
+  const KM=[3,5,8,10,11.5,13,15];
+  let s=`<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:470px;height:auto" role="img" aria-label="Densah bur laser marks with the three upper target depths overlaid.">`;
+  s+=`<path d="M ${cx-wTop/2} ${tip-15*S-6} L ${cx+wTop/2} ${tip-15*S-6} L ${cx+wBot/2} ${tip-6} L ${cx} ${tip+2} L ${cx-wBot/2} ${tip-6} Z" fill="#1B2A2B" stroke="#2E4547"/>`;
+  KM.forEach(mm=>{
+    const y=tip-mm*S;
+    s+=`<line x1="${cx-wTop/2-6}" y1="${y}" x2="${cx+wTop/2+6}" y2="${y}" stroke="#E8EDEA" stroke-width="1.6"/>`;
+    s+=`<text x="${cx-wTop/2-12}" y="${y+4}" text-anchor="end" font-family="'DM Mono',monospace" font-size="11" fill="#8FA6A2">${mm}</text>`;
+  });
+  const T=[
+    {d:9.0,lbl:'UR4 · 9.0 — ceiling',c:'#C86B4A'},
+    {d:7.3,lbl:'UR6 · 7.3 — floor',c:'#3FC1B0'},
+    {d:7.2,lbl:'UR7 · 7.2 — floor',c:'#D9A94E'}
+  ];
+  T.forEach((t,i)=>{
+    const y=tip-t.d*S, ly=52+i*30;
+    s+=`<line x1="${cx-wTop/2-4}" y1="${y}" x2="${cx+wTop/2+4}" y2="${y}" stroke="${t.c}" stroke-width="2.4" stroke-dasharray="5 3"/>`;
+    s+=`<polyline points="${cx+wTop/2+6},${y} ${cx+wTop/2+34},${ly} ${cx+wTop/2+44},${ly}" fill="none" stroke="${t.c}" stroke-width="1"/>`;
+    s+=`<text x="${cx+wTop/2+50}" y="${ly+4}" font-family="'DM Mono',monospace" font-size="12" fill="${t.c}">${t.lbl}</text>`;
+  });
+  s+=`<text x="${cx}" y="${tip+18}" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#8FA6A2">TIP = 0</text>`;
+  s+=`</svg>`;
+  document.getElementById('denskey').innerHTML=`
+   <div class="card" style="margin:0">
+   <p class="kicker">Densah burs — uppers</p>
+   <p style="font-size:12.5px">Laser marks at <span class="mono">3 · 5 · 8 · 10 · 11.5 · 13 · 15…</span> from the tip — a <strong>different system from the Ankylos drills</strong>; never carry a visual reference between the two. All three upper targets fall between marks: read the line against bone, bur stationary, field suctioned. At UR6/UR7 the sinus floor's firm resistance is the true endpoint.</p>
+   ${s}
+   </div>`;
+})();
+</script>
+</body>
+</html>
